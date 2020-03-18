@@ -9,9 +9,10 @@ const logger = require('koa-logger')
 const index = require('./routes/index')
 const users = require('./routes/users')
 require('./store').init()
+app.use(tasks.routes(), tasks.allowedMethods())
 // error handler
 onerror(app)
-
+const tasks = require('./routes/tasks')
 // middlewares
 app.use(bodyparser({
   enableTypes:['json', 'form', 'text']
